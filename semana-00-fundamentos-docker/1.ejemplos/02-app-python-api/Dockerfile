@@ -1,5 +1,11 @@
 # 1. Usamos una imagen base oficial con versión fijada (pinned tag) sobre Alpine Linux (~50MB)
-FROM python:3.12-alpine
+FROM  python:3.11.18-alpine3.23
+
+RUN apk upgrade --no-cache
+RUN pip install --no-cache-dir --upgrade \
+    pip \
+    setuptools>=78.1.1 \
+    wheel
 
 # 2. 🛡️ Buenas Prácticas de Seguridad: Crear usuario y grupo sin privilegios (Least Privilege)
 # En Docker y Kubernetes, correr como 'root' (UID 0) es una mala práctica.
